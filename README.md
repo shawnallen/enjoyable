@@ -13,10 +13,11 @@ Enjoyable supports
  * Automatic and dynamic switching between different input mappings
  * Downloading and sharing input presets for different applications
  * Modern OS X features like resume and automatic termination
+ * Support for MFi controllers, like Steelseries' Nimbus
 
 Enjoyable is free software written by Joe Wreschnig and is based on
 the Enjoy codebase written by [Yifeng Huang](http://nongraphical.com)
-and [Sam McCall](http://abstractable.net/enjoy/).
+and [Sam McCall](http://abstractable.net/enjoy/).  It has been trivially modernized and modestly enhanced by Shawn Allen, to better support MFi controllers.
 
 ## How to Use
 
@@ -24,6 +25,10 @@ To start, just press a button on your joystick or gamepad, then press
 the key you want to map it for. Then press the ▶ button and switch
 back to your game. For more details, Enjoyable has a in-application
 manual available in Help Viewer via `⌘?`.
+
+Enjoyable works by sending input events, like keypresses and mouse movement, to other applications on your Mac.  In order for Enjoyable to properly function with more recent versions of macOS, you must enable Enjoyable via the Accessibility option in the Privacy pane of Security & Privacy preferences.
+
+To open this pane on your Mac, choose Apple menu > System Preferences, click Security & Privacy, click Privacy, then select the Accessibility option from the list.
 
 ## Requirements
 
