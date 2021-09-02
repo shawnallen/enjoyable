@@ -11,7 +11,8 @@
     // Only used for kVK_... codes.
 
 enum {
-    kVK_RightCommand = kVK_Command - 1,
+// NOTE: Omit the redefinition, as it is already (defined and) calculated in HIToolbox/Events.h
+//    kVK_RightCommand = kVK_Command - 1,
     kVK_Insert = 0x72,
     kVK_Power = 0x7f,
     kVK_ApplicationMenu = 0x6e,
