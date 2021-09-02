@@ -7,6 +7,8 @@
 
 #import "NJInputButton.h"
 
+static const CFIndex kMFiAnalogButtonInputMaxThreshold = 10;
+
 @implementation NJInputButton {
     CFIndex _max;
 }
@@ -19,17 +21,18 @@
                                 eid:NJINPUT_EID("Button", index)
                             element:element
                              parent:parent])) {
-        _max = IOHIDElementGetLogicalMax(element);
+        CFIndex logicalMax = IOHIDElementGetLogicalMax(element);
+        _max = logicalMax <= kMFiAnalogButtonInputMaxThreshold ? logicalMax : kMFiAnalogButtonInputMaxThreshold;
     }
     return self;
 }
 
 - (id)findSubInputForValue:(IOHIDValueRef)val {
-    return (IOHIDValueGetIntegerValue(val) == _max) ? self : nil;
+    return (IOHIDValueGetIntegerValue(val) >= _max) ? self : nil;
 }
 
 - (void)notifyEvent:(IOHIDValueRef)value {
-    self.active = IOHIDValueGetIntegerValue(value) == _max;
+    self.active = IOHIDValueGetIntegerValue(value) >= _max;
     self.magnitude = IOHIDValueGetIntegerValue(value) / (float)_max;
 }
 
